@@ -91,8 +91,11 @@ class PetsToolWindowFactory : ToolWindowFactory, DumbAware {
 
         override fun paintComponent(g: Graphics) {
             super.paintComponent(g)
+            var width = 100;
+            var height = 63;
             for (pet in pets) {
-                g.drawImage(pet.image, pet.currentX, this.height - pet.SPRITE_HEIGHT, pet.SPRITE_WIDTH, pet.SPRITE_HEIGHT, null)
+//                g.drawImage(pet.image, pet.currentX, this.height - pet.SPRITE_HEIGHT, pet.SPRITE_WIDTH, pet.SPRITE_HEIGHT, null)
+                g.drawImage(pet.image, pet.currentX, this.height - pet.SPRITE_HEIGHT, width, height, null)
             }
         }
 

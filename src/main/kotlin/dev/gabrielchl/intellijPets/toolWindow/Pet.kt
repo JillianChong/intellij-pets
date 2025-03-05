@@ -13,6 +13,8 @@ import javax.swing.JPanel
 import kotlin.math.abs
 import kotlin.math.max
 
+import java.io.File;
+
 
 // TODO: rewrite all this to allow more pet-specific behaviours
 class Pet(val variant: String, val container: JPanel) {
@@ -52,21 +54,26 @@ class Pet(val variant: String, val container: JPanel) {
         SPEED = Math.round(speedBase * settings.petScale).toInt()
 
         for (state in State.values()) {
-            val spriteImg = ImageIO.read(
-                javaClass.getResource(
-                    String.format(
-                        "/spritesheets/%s/%s.png", variant, state.toString().lowercase(
-                            Locale.getDefault()
-                        )
-                    )
+            val resourcePath = String.format(
+                "/spritesheets/%s/%s.png", variant, state.toString().lowercase(
+                    Locale.getDefault()
                 )
             )
+
+            val resourceUrl = javaClass.getResource(resourcePath)
+            if (resourceUrl == null) {
+                throw IllegalArgumentException("⚠️ Resource not found at: $resourcePath")
+            }
+
+            val spriteImg = ImageIO.read(resourceUrl)
 
             val spriteRow = ArrayList<BufferedImage>()
             var x = 0
             while (x < spriteImg.getWidth(null) / spriteSize) {
-                val croppedImg = spriteImg.getSubimage(spriteSize * x, 0, spriteSize, spriteSize)
-                spriteRow.add(croppedImg)
+//                val croppedImg = spriteImg.getSubimage(spriteSize * x, 0, spriteSize, spriteSize)
+
+//                spriteRow.add(croppedImg)
+                spriteRow.add(spriteImg)
                 x += 1
             }
             sprites[state] = spriteRow

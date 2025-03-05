@@ -13,7 +13,7 @@ class PetsSettingsConfigurable: Configurable {
 
     override fun isModified(): Boolean {
         val state = PetsSettings.instance.state
-        return petsSettingsComponent.petScaleComboBox.item !== state.petScale
+        return petsSettingsComponent.petScaleComboBox.item != state.petScale
     }
 
     override fun apply() {
