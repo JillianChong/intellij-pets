@@ -8,7 +8,7 @@ Inspired (very heavily) by [vscode-pets](https://github.com/tonybaloney/vscode-p
 - A pet that walks around, sits, follows you, interacts with you, basically a fwend
 - Pet variants: 5 cats, bunny, chicken, axolotl, hedgehog, 5 dogs, etc.
 - Pet scale setting, to adjust the size of your pet
-- Elephant
+- Elephant: build -> distributions -> install plugin .zip
 
 ## How to use
 
